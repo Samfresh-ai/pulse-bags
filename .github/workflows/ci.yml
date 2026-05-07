@@ -9,7 +9,7 @@ on:
 jobs:
   ci:
     env:
-      NEXT_PUBLIC_PRIVY_APP_ID: ${{ secrets.NEXT_PUBLIC_PRIVY_APP_ID || 'ci-placeholder-privy-app-id' }}
+      NEXT_PUBLIC_PRIVY_APP_ID: ${{ secrets.NEXT_PUBLIC_PRIVY_APP_ID }}
     name: ci
     runs-on: ubuntu-latest
     steps:

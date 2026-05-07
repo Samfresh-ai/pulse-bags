@@ -17,16 +17,20 @@ Reference images live in `docs/frontend-reference/`:
 7. `07_activation_reward_flow.png`
 8. `08_holder_public_profile.png`
 
-Treat these as **flow, hierarchy, and density references**, not as final pixel-perfect styling. The current product already works; the frontend pass should improve clarity and demo quality without breaking API routes or wallet flows.
+Treat these as the **target visual language for all pages**. Match the dark/purple Pulse look, layout rhythm, hierarchy, rounded panels, stepper patterns, table density, and public-profile composition closely. The implementation does not need to be pixel-perfect, but it should feel like these screens belong to the same designed product, not a generic dashboard reskin. The current product already works; the frontend pass should improve clarity and demo quality without breaking API routes or wallet flows.
 
 ## Aesthetic direction
 
-**Industrial Fan Ledger — proof-heavy creator ops, not decorative crypto UI — dark hard-edged pages with one violet/amber signal layer, dense ranked rows, and a clear launch/connect/reward path.**
+**Dark Pulse Console — premium crypto-social product, but still proof-heavy and operational — deep navy/black surfaces, purple primary actions, soft card depth, neon green score/reward signals, dense holder rows, and a clear connect → rank → reward path.**
 
-Use the references for:
+Match from the references:
 
-- page sequence
-- sidebar/dashboard structure
+- dark navy/black background and soft purple glow accents
+- PULSE logo/top-left brand treatment
+- rounded dark cards with subtle borders/shadows
+- purple primary buttons and active states
+- green score/reward numbers
+- sidebar dashboard structure
 - onboarding stepper shape
 - holder table density
 - score breakdown hierarchy
@@ -35,8 +39,8 @@ Use the references for:
 
 Avoid:
 
-- generic glassmorphism everywhere
-- purple gradient blobs as the main design idea
+- changing the product into a generic SaaS dashboard
+- adding unrelated colors beyond purple/green/amber badge accents
 - crowded badge/pill soup
 - decorative charts that do not support the demo
 - hiding broken or unimplemented live states behind pretty mock data

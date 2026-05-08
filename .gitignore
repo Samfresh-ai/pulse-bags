@@ -46,3 +46,5 @@ data/pulse-state.json
 
 # local proof artifacts
 /screenshots/*.png
+
+node_modules

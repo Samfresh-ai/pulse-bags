@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #090907;
+  --background: #05050a; 
   --foreground: #f3efe1;
+  
+  --pulse-primary: #8b5cf6;
+  --pulse-glow: rgba(139, 92, 246, 0.15);
+  
+  --reward-signal: #22c55e;
+
+  --card-bg: #0c0c14;
+  --card-border: #1e1e2d;
 }
 
 @theme inline {
@@ -24,7 +32,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 button,
@@ -35,16 +43,11 @@ a {
 html,
 body {
   overflow-x: hidden;
+    h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
 }
 
-p,
-h1,
-h2,
-h3,
-span,
-small,
-pre,
-a,
-div {
+.long-text {
   overflow-wrap: anywhere;
 }

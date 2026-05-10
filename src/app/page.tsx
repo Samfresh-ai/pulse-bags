@@ -263,8 +263,8 @@ export default function PulseLandingPage() {
             Connect your Bags token
             <ArrowIcon className="transition-transform group-hover:translate-x-1" />
           </PrimaryButton>
-          <SecondaryButton href="/demo">See demo</SecondaryButton>
-          <SecondaryButton href="/launch">Launch Pulse token on Bags</SecondaryButton>
+          <SecondaryButton href="#">See demo</SecondaryButton>
+          <SecondaryButton href="#">Launch Pulse token on Bags</SecondaryButton>
         </div>
       </section>
 
@@ -340,7 +340,7 @@ export default function PulseLandingPage() {
               Connect your Bags token
               <ArrowIcon className="transition-transform group-hover:translate-x-1" />
             </PrimaryButton>
-            <SecondaryButton href="/demo">See demo</SecondaryButton>
+            <SecondaryButton href="#">See demo</SecondaryButton>
           </div>
         </div>
       </section>

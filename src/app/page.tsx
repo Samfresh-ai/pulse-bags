@@ -293,7 +293,7 @@ export default function PulseLandingPage() {
           <StepCard step="STEP 02" title="Holders verify identity" color="green">
             Each holder links their wallet to their social profile. Pulse builds a verified conviction score — holdings, duration, reach, engagement.
           </StepCard>
-          <StepCard step="STEP 03" title="Open the reward window" color="amber">
+          <StepCard step="STEP 03" title="Open the reward window" color="violet">
             Route your Bags fee-share to top-ranked holders through a time-boxed bonus window. Transparent, on-chain, no intermediary.
           </StepCard>
         </div>
@@ -336,7 +336,7 @@ export default function PulseLandingPage() {
             Connect your Bags token, find your strongest holders ranked by conviction, and open a fee-share bonus window for the ones who show up.
           </p>
           <div className="relative flex flex-wrap justify-center gap-3">
-            <PrimaryButton href="/connect">
+            <PrimaryButton href="/console">
               Connect your Bags token
               <ArrowIcon className="transition-transform group-hover:translate-x-1" />
             </PrimaryButton>

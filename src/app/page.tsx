@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { PulseLogo } from "@/components/ui/logo";
 import Footer from "@/components/ui/footer";
-import Image from "next/image"
+import Image from "next/image";
+import FloatingCoin from "@/components/ui/floatingCoin";
+import ProfileMockup from "@/components/ui/profileMockUp";
 
 function ArrowIcon({ className = "" }) {
   return (
@@ -126,15 +128,19 @@ export default function PulseLandingPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#050810] font-['DM_Sans'] text-slate-100">
       <div id="space" className="pointer-events-none fixed inset-0 z-0 overflow-hidden" />
+      <FloatingCoin side="left"  top="28%" delay="0s"    size={28} />
+      <FloatingCoin side="left"  top="58%" delay="1.8s"  size={22} />
+      <FloatingCoin side="right" top="22%" delay="0.9s"  size={30} />
+      <FloatingCoin side="right" top="55%" delay="2.6s"  size={20} />
 
       <nav className="fixed inset-x-0 top-0 z-[200] flex h-[66px] items-center justify-between border-b border-white/[0.055] bg-[#050810]/70 px-5 backdrop-blur-[18px] md:px-12">
         <PulseLogo />
 
         <ul className="hidden list-none gap-8 md:flex">
-          <li><Link href="#how" className="text-sm text-slate-400 no-underline transition hover:text-slate-100">Product</Link></li>
-          <li><Link href="#how" className="text-sm text-slate-400 no-underline transition hover:text-slate-100">How it Works</Link></li>
+          <li><Link href="#how"     className="text-sm text-slate-400 no-underline transition hover:text-slate-100">Product</Link></li>
+          <li><Link href="#how"     className="text-sm text-slate-400 no-underline transition hover:text-slate-100">How it Works</Link></li>
           <li><Link href="#holders" className="text-sm text-slate-400 no-underline transition hover:text-slate-100">For Holders</Link></li>
-          <li><Link href="#" className="text-sm text-slate-400 no-underline transition hover:text-slate-100">Docs</Link></li>
+          <li><Link href="#"        className="text-sm text-slate-400 no-underline transition hover:text-slate-100">Docs</Link></li>
         </ul>
 
         <Link
@@ -145,29 +151,99 @@ export default function PulseLandingPage() {
           <ArrowIcon />
         </Link>
       </nav>
-
       <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pb-[90px] pt-[130px] text-center">
         <div className="animate-up mb-[30px] inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 py-1.5 pl-2 pr-3.5 font-['JetBrains_Mono'] text-[11px] tracking-[0.06em] text-violet-300">
           <span className="h-1.5 w-1.5 animate-glow-dot rounded-full bg-violet-500" />
           BUILT ON
-          <Image src="/Logos/bags-logo.svg" alt="bags" width={20} height={20}/>
-           BAGS PROTOCOL
+          <Image src="/Logos/bags-logo.svg" alt="bags" width={20} height={20} />
+          BAGS PROTOCOL
+        </div>
+        <div className="w-full max-w-[1080px] flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
+          <div className="flex-1 text-center lg:text-left">
+            <h1 className="animate-up animation-delay-100 font-['Space_Grotesk'] text-[clamp(32px,6vw,72px)] font-bold leading-[1.05] tracking-[-0.035em]">
+              Find your strongest holders.<br />
+              <em className="not-italic bg-gradient-to-br from-violet-200 via-violet-500 to-purple-700 bg-clip-text text-transparent">
+                Reward the ones who believe.
+              </em>
+            </h1>
+          </div>
+          <div className="relative flex-1 w-full h-[320px] overflow-hidden lg:h-[480px] lg:overflow-visible">
+
+            <div
+              className="absolute inset-0"
+              style={{
+                transform: "translateX(80px) scale(0.82)",
+                transformOrigin: "right center",
+                opacity: 0.18,
+                filter: "blur(2px)",
+                zIndex: 1,
+              }}
+            >
+              <Image
+                src="/Images/follow2.png"
+                alt=""
+                fill
+                className="object-contain object-center lg:object-left"
+                style={{ mixBlendMode: "luminosity" }}
+              />
+            </div>
+
+            <div
+              className="absolute inset-0"
+              style={{
+                transform: "translateX(40px) scale(0.91)",
+                transformOrigin: "right center",
+                opacity: 0.42,
+                filter: "blur(0.8px)",
+                zIndex: 2,
+              }}
+            >
+              <Image
+                src="/Images/follow2.png"
+                alt=""
+                fill
+                className="object-contain object-center lg:object-left"
+                style={{ mixBlendMode: "luminosity" }}
+              />
+            </div>
+
+            <div
+              className="absolute inset-0"
+              style={{ opacity: 0.88, zIndex: 3 }}
+            >
+              <Image
+                src="/Images/follow2.png"
+                alt="followers"
+                fill
+                className="object-contain object-center lg:object-left"
+                style={{ mixBlendMode: "luminosity" }}
+                priority
+              />
+            </div>
+
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                zIndex: 4,
+                background: `
+                  linear-gradient(to right,  #050810 0%, transparent 22%, transparent 75%, #050810 100%),
+                  linear-gradient(to bottom, #050810 0%, transparent 18%, transparent 75%, #050810 100%)
+                `,
+              }}
+            />
+          </div>
         </div>
 
-        <h1 className="animate-up animation-delay-100 mb-6 max-w-[820px] font-['Space_Grotesk'] text-[clamp(40px,6.5vw,78px)] font-bold leading-[1.05] tracking-[-0.035em]">
-          Find your strongest holders.<br />
-          <em className="not-italic text-transparent bg-clip-text bg-gradient-to-br from-violet-200 via-violet-500 to-purple-700">
-            Reward the ones who believe.
-          </em>
-        </h1>
-
-        <div className="animate-up animation-delay-200 mx-auto mb-11 flex max-w-[760px] flex-col items-start gap-5 md:flex-row md:items-start md:gap-0">
+        <div className="animate-up animation-delay-200 mx-auto mb-11 mt-10 flex max-w-[760px] flex-col items-start gap-5 md:flex-row md:items-start md:gap-0">
           {[
-            ["01", "Connect a Bags token", "Link your token — Pulse indexes all holders on-chain instantly."],
-            ["02", "Find your strongest holders", "Holders verify their social presence. Pulse scores conviction across holdings, duration, and reach."],
-            ["03", "Reward with fee-share", "Open a bonus window that routes your Bags fee-share directly to ranked believers — on-chain, transparent."],
-          ].map(([number, title, text], index) => (
-            <div key={number} className="relative flex flex-1 flex-col items-center gap-2.5 px-6 text-center md:[&:not(:first-child)]:before:absolute md:[&:not(:first-child)]:before:left-0 md:[&:not(:first-child)]:before:top-[22px] md:[&:not(:first-child)]:before:h-7 md:[&:not(:first-child)]:before:w-px md:[&:not(:first-child)]:before:bg-white/[0.055]">
+            ["01", "Connect a Bags token",        "Link your token — Pulse indexes all holders on-chain instantly."],
+            ["02", "Find your strongest holders",  "Holders verify their social presence. Pulse scores conviction across holdings, duration, and reach."],
+            ["03", "Reward with fee-share",         "Open a bonus window that routes your Bags fee-share directly to ranked believers — on-chain, transparent."],
+          ].map(([number, title, text]) => (
+            <div
+              key={number}
+              className="relative flex flex-1 flex-col items-center gap-2.5 px-6 text-center md:[&:not(:first-child)]:before:absolute md:[&:not(:first-child)]:before:left-0 md:[&:not(:first-child)]:before:top-[22px] md:[&:not(:first-child)]:before:h-7 md:[&:not(:first-child)]:before:w-px md:[&:not(:first-child)]:before:bg-white/[0.055]"
+            >
               <span className="rounded-full border border-violet-500/20 bg-violet-500/10 px-2.5 py-1 font-['JetBrains_Mono'] text-[10px] tracking-[0.1em] text-violet-300">
                 {number}
               </span>
@@ -252,7 +328,9 @@ export default function PulseLandingPage() {
           <div className="pointer-events-none absolute -inset-20 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.1)_0%,transparent_65%)]" />
           <h2 className="relative mb-3 font-['Space_Grotesk'] text-[clamp(24px,3.5vw,36px)] font-bold tracking-[-0.025em]">
             Ready to reward<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-violet-200 to-violet-500">your real believers?</span>
+            <span className="bg-gradient-to-br from-violet-200 to-violet-500 bg-clip-text text-transparent">
+              your real believers?
+            </span>
           </h2>
           <p className="relative mb-8 text-[15px] font-light leading-[1.65] text-slate-400">
             Connect your Bags token, find your strongest holders ranked by conviction, and open a fee-share bonus window for the ones who show up.
@@ -266,7 +344,8 @@ export default function PulseLandingPage() {
           </div>
         </div>
       </section>
-    <Footer/>
+
+      <Footer />
     </main>
   );
 }
@@ -303,11 +382,13 @@ function ScorePanel() {
       <PanelLabel color="bg-violet-300">PULSE SCORING SIGNALS</PanelLabel>
       <div className="flex flex-col gap-2.5">
         <ScoreBar label="Holdings weight" value="highest" width="88%" />
-        <ScoreBar label="Hold duration" value="high" width="72%" />
-        <ScoreBar label="Social reach" value="medium" width="55%" />
-        <ScoreBar label="Engagement" value="contributes" width="38%" />
+        <ScoreBar label="Hold duration"   value="high"    width="72%" />
+        <ScoreBar label="Social reach"    value="medium"  width="55%" />
+        <ScoreBar label="Engagement"      value="contributes" width="38%" />
       </div>
-      <div className="mt-3.5 border-t border-white/[0.055] pt-3 text-[11px] text-slate-600">Scores populate once holders verify</div>
+      <div className="mt-3.5 border-t border-white/[0.055] pt-3 text-[11px] text-slate-600">
+        Scores populate once holders verify
+      </div>
     </Panel>
   );
 }
@@ -317,11 +398,13 @@ function RewardPanel() {
     <Panel>
       <PanelLabel color="bg-green-500">FEE-SHARE DISTRIBUTION</PanelLabel>
       <div className="flex flex-col gap-2">
-        <RewardRow rank="#1 — top score" width="90%" label="largest share" opacity="opacity-100" />
-        <RewardRow rank="#2 — ranked" width="65%" label="proportional" opacity="opacity-75" />
-        <RewardRow rank="#3 — ranked" width="45%" label="proportional" opacity="opacity-50" />
+        <RewardRow rank="#1 — top score" width="90%" label="largest share"  opacity="opacity-100" />
+        <RewardRow rank="#2 — ranked"    width="65%" label="proportional"   opacity="opacity-75"  />
+        <RewardRow rank="#3 — ranked"    width="45%" label="proportional"   opacity="opacity-50"  />
       </div>
-      <div className="mt-3 border-t border-white/[0.055] pt-3 text-[11px] text-slate-600">Amounts depend on fee pool size and rank</div>
+      <div className="mt-3 border-t border-white/[0.055] pt-3 text-[11px] text-slate-600">
+        Amounts depend on fee pool size and rank
+      </div>
     </Panel>
   );
 }
@@ -377,8 +460,8 @@ function RewardRow({ rank, width, label, opacity }: { rank: string; width: strin
 function StepCard({ step, title, children, color }: { step: string; title: string; children: React.ReactNode; color: "violet" | "green" | "amber" }) {
   const colorMap = {
     violet: "border-violet-500/20 bg-violet-500/10 text-violet-500",
-    green: "border-green-500/15 bg-green-500/10 text-green-500",
-    amber: "border-amber-500/15 bg-amber-500/10 text-amber-500",
+    green:  "border-green-500/15  bg-green-500/10  text-green-500",
+    amber:  "border-amber-500/15  bg-amber-500/10  text-amber-500",
   };
 
   return (
@@ -409,60 +492,3 @@ function BenefitCard({ title, children }: { title: string; children: React.React
   );
 }
 
-function ProfileMockup() {
-  return (
-    <div className="reveal rounded-[20px] border border-violet-500/15 bg-[#0d1120] p-6 shadow-[0_0_50px_rgba(139,92,246,0.06)]">
-      <div className="mb-5 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="h-[42px] w-[42px] rounded-[11px] bg-gradient-to-br from-violet-600 to-indigo-600" />
-          <div>
-            <div className="text-sm font-semibold text-slate-100">Your public profile</div>
-            <div className="mt-0.5 font-['JetBrains_Mono'] text-[10px] text-slate-600">wallet linked after verification</div>
-          </div>
-        </div>
-        <div className="rounded-md border border-violet-500/20 bg-violet-500/10 px-2.5 py-1 font-['JetBrains_Mono'] text-[10px] text-violet-300">Your rank</div>
-      </div>
-
-      <div className="mb-[18px] border-y border-white/[0.055] py-5 text-center">
-        <span className="mb-2 block font-['JetBrains_Mono'] text-[10px] uppercase tracking-[0.1em] text-slate-600">Pulse Score</span>
-        <div className="flex items-center justify-center">
-          <svg width="90" height="90" viewBox="0 0 90 90">
-            <circle cx="45" cy="45" r="36" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
-            <circle cx="45" cy="45" r="36" fill="none" stroke="url(#pulseRing)" strokeWidth="6" strokeLinecap="round" strokeDasharray="226" strokeDashoffset="56" transform="rotate(-90 45 45)" />
-            <defs>
-              <linearGradient id="pulseRing" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#8b5cf6" />
-                <stop offset="100%" stopColor="#a78bfa" />
-              </linearGradient>
-            </defs>
-            <text x="45" y="49" textAnchor="middle" fill="#3d4f63" fontFamily="JetBrains Mono, monospace" fontSize="9" letterSpacing="1">LIVE</text>
-          </svg>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-2.5">
-        <ProfileMetric label="Holdings weight" value="↑ most" width="82%" />
-        <ProfileMetric label="Hold duration" value="↑ high" width="70%" />
-        <ProfileMetric label="Social reach" value="mid" width="54%" />
-        <ProfileMetric label="Engagement" value="mid" width="38%" />
-      </div>
-
-      <div className="mt-[18px] flex items-center justify-between border-t border-white/[0.055] pt-4">
-        <span className="text-xs text-slate-600">Fee-share reward</span>
-        <span className="font-['JetBrains_Mono'] text-[11px] text-slate-600">proportional to rank · paid on window close</span>
-      </div>
-    </div>
-  );
-}
-
-function ProfileMetric({ label, value, width }: { label: string; value: string; width: string }) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <span className="min-w-[105px] text-xs text-slate-400">{label}</span>
-      <div className="h-1 flex-1 overflow-hidden rounded-full bg-white/5">
-        <div className="h-full rounded-full bg-gradient-to-r from-violet-500 to-violet-300" style={{ width }} />
-      </div>
-      <span className="min-w-[30px] text-right font-['JetBrains_Mono'] text-[11px] text-slate-600">{value}</span>
-    </div>
-  );
-}

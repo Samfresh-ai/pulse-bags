@@ -36,19 +36,19 @@ export const Pagination = ({
     const shouldShowRightDots = rightSiblingIndex < totalPages - 2;
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      let leftItemCount = 3 + 2 * siblingCount;
-      let leftRange = range(1, leftItemCount);
+      const leftItemCount = 3 + 2 * siblingCount;
+      const leftRange = range(1, leftItemCount);
       return [...leftRange, "DOTS", totalPages];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      let rightItemCount = 3 + 2 * siblingCount;
-      let rightRange = range(totalPages - rightItemCount + 1, totalPages);
+      const rightItemCount = 3 + 2 * siblingCount;
+      const rightRange = range(totalPages - rightItemCount + 1, totalPages);
       return [1, "DOTS", ...rightRange];
     }
 
     if (shouldShowLeftDots && shouldShowRightDots) {
-      let middleRange = range(leftSiblingIndex, rightSiblingIndex);
+      const middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [1, "DOTS", ...middleRange, "DOTS", totalPages];
     }
   }, [totalPages, siblingCount, currentPage]);

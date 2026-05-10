@@ -308,7 +308,7 @@ export default function PulseLandingPage() {
             </h2>
             <div className="mt-8 flex flex-col gap-[18px]">
               <BenefitCard title="Ranked on every leaderboard">
-                Your Pulse Score appears publicly on every creator's holder table. Conviction and reach determine your rank.
+                Your Pulse Score appears publicly on every creator&apos;s holder table. Conviction and reach determine your rank.
               </BenefitCard>
               <BenefitCard title="Earn Bags fee-share">
                 Creators open bonus windows that route fee-share to their top Pulse holders. Higher rank means a larger cut of the pool.

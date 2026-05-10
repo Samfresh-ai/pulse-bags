@@ -2,6 +2,15 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  async redirects() {
+    return [
+      {
+        source: '/app',
+        destination: '/console',
+        permanent: true, 
+      },
+    ];
+  },
   turbopack: {
     root: process.cwd(),
   },

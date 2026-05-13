@@ -9,11 +9,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 function GoogleIcon() {
-  return <img src="/Icons/google-icon.svg" alt="Google Icon" className="w-4 h-4" />;
+  return <Image src="/Icons/google-icon.svg" alt="Google Icon" className="w-4 h-4" />;
 }
 
 function XIcon() {
-  return <img src="/Icons/x-icon.svg" alt="X Icon" className="w-4 h-4" />;
+  return <Image src="/Icons/x-icon.svg" alt="X Icon" className="w-4 h-4" />;
 }
 
 function PrivyIcon() {
@@ -23,7 +23,7 @@ function PrivyIcon() {
 }
 
 function WalletIcon() {
-  return <img src="/Icons/wallet-icon.svg" alt="Wallet Icon" className="w-4 h-4" />;
+  return <Image src="/Icons/wallet-icon.svg" alt="Wallet Icon" className="w-4 h-4" />;
 }
 
 function ArrowLeft() {

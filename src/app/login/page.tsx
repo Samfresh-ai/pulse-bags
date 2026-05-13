@@ -108,19 +108,6 @@ export default function LoginPage() {
     const space = document.getElementById("login-space");
     if (!space || space.childElementCount > 0) return;
 
-    for (let i = 0; i < 140; i++) {
-      const el = document.createElement("div");
-      const sz = Math.random() * 1.7 + 0.3;
-      el.className = "absolute rounded-full bg-white";
-      el.style.cssText = `
-        width:${sz}px;height:${sz}px;
-        left:${Math.random() * 100}%;top:${Math.random() * 100}%;
-        animation:tw ${2.5 + Math.random() * 4}s ease-in-out infinite ${-(Math.random() * 7)}s;
-        --lo:${0.06 + Math.random() * 0.14};--hi:${0.4 + Math.random() * 0.5};
-      `;
-      space.appendChild(el);
-    }
-
     [
       { w: 520, h: 520, t: "-80px",  l: "-80px",  c: "rgba(139,92,246,0.08)" },
       { w: 380, h: 380, t: "38%",    r: "-90px",  c: "rgba(99,102,241,0.055)" },

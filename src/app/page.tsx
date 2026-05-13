@@ -144,7 +144,7 @@ export default function PulseLandingPage() {
         </ul>
 
         <Link
-          href="/console"
+          href="/login"
           className="inline-flex items-center gap-1.5 rounded-[10px] bg-violet-500 px-[18px] py-2 text-[13.5px] font-medium text-white no-underline shadow-[0_0_18px_rgba(139,92,246,0.22)] transition-all duration-200 hover:-translate-y-px hover:bg-violet-600 hover:shadow-[0_0_30px_rgba(139,92,246,0.38)]"
         >
           Get Started
@@ -256,7 +256,7 @@ export default function PulseLandingPage() {
         </div>
 
         <div className="animate-up animation-delay-300 flex flex-wrap items-center justify-center gap-3">
-          <PrimaryButton href="/console">
+          <PrimaryButton href="/login">
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M7.5 1.5a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 1.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill="currentColor" />
             </svg>

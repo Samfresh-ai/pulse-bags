@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PulseLogo } from "@/components/ui/logo";
 import Footer from "@/components/ui/footer";
@@ -53,7 +53,9 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
 }
 
 export default function PulseLandingPage() {
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
+    setMounted(true);
     const space = document.getElementById("space");
     if (!space || space.childElementCount > 0) return;
 
@@ -124,6 +126,8 @@ export default function PulseLandingPage() {
 
     return () => observer.disconnect();
   }, []);
+  
+  if (!mounted) return null;
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#050810] font-['DM_Sans'] text-slate-100">

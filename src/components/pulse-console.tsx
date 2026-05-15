@@ -5,6 +5,8 @@ import { useMemo, useState } from "react";
 import { usePrivy } from "@privy-io/react-auth";
 import type { ActivationPreview, Holder, TokenProfile, TrueFanScore } from "@/lib/types";
 import { ActivationPanel } from "./activation-panel";
+import DashboardSidebar from "./ui/dashboard-sidebar";
+import DashboardOverview from "./dashboard-overview";
 
 type Props = {
   initialToken: TokenProfile;
@@ -36,6 +38,7 @@ export function PulseConsole({ initialToken, initialHolders, initialScores, init
   const [log, setLog] = useState<string[]>(["Demo state loaded. Live mode activates when API keys are present."]);
   const [state, setState] = useState<ActionState>("idle");
   const [launchUrl, setLaunchUrl] = useState("");
+  const [activeNav, setActiveNav] = useState("overview");
   const { ready, authenticated, user, login, logout } = usePrivy();
 
   const scoreByWallet = useMemo(() => new Map(scores.map((score) => [score.wallet, score])), [scores]);
@@ -134,8 +137,24 @@ export function PulseConsole({ initialToken, initialHolders, initialScores, init
   }
 
   return (
-    <main className="min-h-screen bg-[#090907] text-[#f3efe1]">
-      <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-5 sm:px-8 lg:px-10">
+    <main className="flex min-h-screen bg-[#070b14] font-['DM_Sans'] text-slate-100">
+      <DashboardSidebar 
+        activeNav={activeNav}
+        token={token}
+        onNavChange={setActiveNav}
+      />
+
+      {/* ── Right panel ── */}
+      <div className="flex-1 overflow-auto">
+        {activeNav === "overview" ? (
+          <DashboardOverview
+            initialToken={token}
+            initialHolders={holders}
+            initialScores={scores}
+            initialActivation={activation}
+          />
+        ) : (
+        <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-5 sm:px-8 lg:px-10">
         <nav className="flex flex-wrap items-center justify-between gap-3 border-b border-[#2b291f] pb-4 text-xs uppercase tracking-[0.22em] text-[#8d886f]">
           <span>Pulse / Bags fan CRM</span>
           <span className={state === "error" ? "text-[#ff6b4a]" : state === "loading" ? "text-[#f1c94b]" : "text-[#8d886f]"}>{state}</span>
@@ -230,7 +249,9 @@ export function PulseConsole({ initialToken, initialHolders, initialScores, init
             return <Link href={`/h/${holder.wallet}`} key={holder.wallet} className="grid gap-2 border-b border-[#201e17] px-4 py-4 text-sm transition hover:bg-[#15130e] sm:grid-cols-[0.45fr_1fr_0.7fr_0.7fr_1fr] sm:items-center"><span className="font-mono text-[#f1c94b]">#{holder.balanceRank}</span><span><strong className="block text-[#fff8d9]">{holder.xUsername ? `@${holder.xUsername}` : shortWallet(holder.wallet)}</strong><small className="font-mono text-[#77715d]">{shortWallet(holder.wallet)}</small></span><span className="font-mono">{holder.uiBalance.toLocaleString()}</span><span className="font-black text-[#fff8d9]">{score?.score ?? "—"}</span><span className="text-xs text-[#bdb69a]">{score?.badges.join(" / ") ?? "No score"}</span></Link>;
           })}
         </section>
-      </section>
+        </section>
+      )}
+      </div>
     </main>
   );
 }

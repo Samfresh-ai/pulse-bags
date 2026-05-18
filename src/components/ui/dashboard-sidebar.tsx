@@ -9,8 +9,21 @@ import {
   Settings,
   LogOut,
 } from 'lucide-react';
+import { PulseLogo } from './logo';
 
-export default function DashboardSidebar({ activeNav, token, onNavChange }: { activeNav: string, token: any, onNavChange?: (id: string) => void }) {
+interface TokenInfo {
+  name?: string;
+  symbol?: string;
+  mint?: string;
+}
+
+interface DashboardSidebarProps {
+  activeNav: string;
+  token: TokenInfo | null | undefined;
+  onNavChange?: (id: string) => void;
+}
+
+export default function DashboardSidebar({ activeNav, token, onNavChange }: DashboardSidebarProps) {
     const { user, logout } = usePrivy();
 
     const formatWallet = (address?: string) => 
@@ -27,12 +40,7 @@ export default function DashboardSidebar({ activeNav, token, onNavChange }: { ac
     return (
         <aside className="flex h-screen w-[220px] shrink-0 flex-col border-r border-white/[0.055] bg-var(--background) sticky top-0 overflow-y-auto">
             <div className="flex h-[64px] items-center border-b border-white/[0.055] px-5">
-                <div className="flex items-center gap-2.5">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-[7px] bg-violet-600">
-                        <Zap size={14} color="white" />
-                    </div>
-                    <span className="font-bold text-slate-100">PULSE</span>
-                </div>
+                <PulseLogo />
             </div>
 
             <div className="border-b border-white/[0.055] px-4 py-4">

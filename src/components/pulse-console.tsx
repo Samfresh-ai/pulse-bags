@@ -7,6 +7,7 @@ import type { ActivationPreview, Holder, TokenProfile, TrueFanScore } from "@/li
 import { ActivationPanel } from "./activation-panel";
 import DashboardSidebar from "./ui/dashboard-sidebar";
 import DashboardOverview from "./dashboard-overview";
+import HoldersPage from "./holders";
 
 type Props = {
   initialToken: TokenProfile;
@@ -144,7 +145,6 @@ export function PulseConsole({ initialToken, initialHolders, initialScores, init
         onNavChange={setActiveNav}
       />
 
-      {/* ── Right panel ── */}
       <div className="flex-1 overflow-auto">
         {activeNav === "overview" ? (
           <DashboardOverview
@@ -152,6 +152,12 @@ export function PulseConsole({ initialToken, initialHolders, initialScores, init
             initialHolders={holders}
             initialScores={scores}
             initialActivation={activation}
+          />
+        ) : activeNav === "holders" ? (
+          <HoldersPage
+            initialToken={token}
+            initialHolders={holders}
+            initialScores={scores}
           />
         ) : (
         <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-5 sm:px-8 lg:px-10">

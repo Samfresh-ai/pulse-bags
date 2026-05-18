@@ -29,41 +29,26 @@ async function postJson<T>(url: string, body: unknown): Promise<T> {
   return json as T;
 }
 
-const IconOverview = () => (
-<Image src="/Icons/icon-overview.svg" alt="Icon Overview" width={16} height={16} />
-);
 const IconHolders = () => (
-<Image src="/Icons/icon-holders.svg" alt="Icon Holders" width={16} height={16} />
-);
-const IconActivations = () => (
-    <Image src="/Icons/icon-activations.svg" alt="Icon Activations" width={16} height={16} />
-);
-const IconAnalytics = () => (
-<Image src="/Icons/icon-analytics.svg" alt="Icon Analytics" width={16} height={16} />
-);
-const IconSettings = () => (
-<Image src="/Icons/icon-settings.svg" alt="Icon Settings" width={16} height={16} />
-);
-const IconExternal = () => (
-<Image src="/Icons/icon-external.svg" alt="Icon External" width={16} height={16} />
+  <Image src="/Icons/icon-holders.svg" alt="Icon Holders" width={16} height={16} />
 );
 const IconTrendUp = () => (
-<Image src="/Icons/icon-trendup.svg" alt="Icon Trendup" width={16} height={16} />
+  <Image src="/Icons/icon-trendup.svg" alt="Icon Trendup" width={16} height={16} />
 );
 const IconSync = () => (
-<Image src="/Icons/icon-sync.svg" alt="Icon Sync" width={16} height={16} />
+  <Image src="/Icons/icon-sync.svg" alt="Icon Sync" width={16} height={16} />
 );
 const IconStar = () => (
-<Image src="/Icons/icon-star.svg" alt="Icon Star" width={16} height={16} />
+  <Image src="/Icons/icon-star.svg" alt="Icon Star" width={16} height={16} />
 );
 const IconReward = () => (
-<Image src="/Icons/icon-reward.svg" alt="Icon Reward" width={16} height={16} />
+  <Image src="/Icons/icon-reward.svg" alt="Icon Reward" width={16} height={16} />
 );
 const IconClose = () => (
-<Image src="/Icons/icon-close.svg" alt="Icon Close" width={16} height={16} />
+  <Image src="/Icons/icon-close.svg" alt="Icon Close" width={16} height={16} />
 );
 const IconChevronDown = () => (
-<Image src="/Icons/icon-chevron-down.svg" alt="Icon Chevron Down" width={16} height={16} />
+  <Image src="/Icons/icon-chevron-down.svg" alt="Icon Chevron Down" width={16} height={16} />
 );
 
 function WavySparkline({ data }: { data: number[] }) {
@@ -162,25 +147,6 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-function NavItem({ icon, label, active, href = "#" }: {
-  icon: React.ReactNode; label: string; active?: boolean; href?: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className={[
-        "flex items-center gap-3 rounded-[10px] px-3 py-2.5 text-[13.5px] font-medium transition-all duration-150 border",
-        active
-          ? "bg-violet-500/20 border-violet-500/25 text-violet-200"
-          : "border-transparent text-slate-500 hover:bg-white/[0.04] hover:text-slate-300",
-      ].join(" ")}
-    >
-      <span className={active ? "text-violet-400" : "text-slate-600"}>{icon}</span>
-      {label}
-    </Link>
-  );
-}
-
 function Avatar({ name, size = "md", gradient }: {
   name: string; size?: "sm" | "md" | "lg";
   gradient?: string;
@@ -197,7 +163,7 @@ function Avatar({ name, size = "md", gradient }: {
 export default function DashboardOverview({
   initialToken, initialHolders, initialScores, initialActivation,
 }: Props) {
-  const [token, setToken]           = useState(initialToken);
+  const [token]                     = useState(initialToken);
   const [holders, setHolders]       = useState(initialHolders);
   const [scores, setScores]         = useState(initialScores);
   const [activation, setActivation] = useState(initialActivation);
@@ -206,10 +172,7 @@ export default function DashboardOverview({
   const [range, setRange]           = useState<Range>("7D");
   const [filter, setFilter]         = useState("all");
 
-  const { user } = usePrivy();
-  const connectedWallet =
-    (user as any)?.wallet?.address ??
-    (user as any)?.linkedAccounts?.find((a: any) => a.type === "wallet")?.address;
+  usePrivy();
 
   const scoreByWallet = useMemo(
     () => new Map(scores.map((s) => [s.wallet, s])),
@@ -250,7 +213,7 @@ export default function DashboardOverview({
         {
           name: activation.description ?? "Activation",
           date: activation.createdAt
-            ? new Date(activation.createdAt).toLocaleDateString("en-US", { month: "short", d: "numeric", year: "numeric" } as any)
+            ? new Date(activation.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
             : "—",
           status: "Active",
           pct: `${((activation.holderPoolBps ?? 0) / 100).toFixed(0)}%`,
@@ -278,7 +241,7 @@ export default function DashboardOverview({
   async function syncHolders() {
     const r = await runAction("Holders synced.", () =>
       postJson<{ holders: Holder[] }>(`/api/tokens/${encodeURIComponent(token.mint)}/sync-holders`, {}));
-    if (r) setHolders((r as any).holders);
+    if (r) setHolders(r.holders);
   }
   async function syncSocial() {
     await runAction("Social matched.", () =>
@@ -289,12 +252,12 @@ export default function DashboardOverview({
   async function recomputeScores() {
     const r = await runAction("Scores recomputed.", () =>
       postJson<{ scores: TrueFanScore[] }>(`/api/tokens/${encodeURIComponent(token.mint)}/recompute-scores`, {}));
-    if (r) setScores((r as any).scores);
+    if (r) setScores(r.scores);
   }
   async function previewReward() {
     const r = await runAction("Reward preview built.", () =>
       postJson<{ activation: ActivationPreview }>(`/api/tokens/${encodeURIComponent(token.mint)}/activation/preview`, { targetCount: 5, holderPoolBps: 1000 }));
-    if (r) setActivation((r as any).activation);
+    if (r) setActivation(r.activation);
   }
 
   const xLabels = ["May 9", "May 15", "May 22", "May 29", "Jun 5"];
@@ -338,7 +301,7 @@ export default function DashboardOverview({
         </div>
 
         <div className="p-7 space-y-5">
-              <div>
+            <div>
             <h1 className="font-['Space_Grotesk'] text-[22px] font-bold tracking-[-0.025em] leading-none">Overview</h1>
             <p className="mt-1 text-[12px] text-slate-600">Your community at a glance</p>
           </div>
@@ -410,7 +373,7 @@ export default function DashboardOverview({
                   <p className="font-['JetBrains_Mono'] text-[12px] text-slate-500 mb-4">
                     Held for{" "}
                     <span className="text-slate-300 font-semibold">
-                      {(topHolderRow as any)?.holdDays ?? "—"} days
+                      {(topHolderRow as Holder & { holdDays?: number })?.holdDays ?? "—"} days
                     </span>
                   </p>
                   {topScoreEntry?.badges?.length ? (
@@ -512,7 +475,7 @@ export default function DashboardOverview({
                 ))
               ) : (
                 <div className="py-10 text-center font-['JetBrains_Mono'] text-[11px] text-slate-700">
-                  No activations yet — click "Preview reward" to get started
+                  No activations yet — click &quot;Preview reward&quot; to get started
                 </div>
               )}
             </div>

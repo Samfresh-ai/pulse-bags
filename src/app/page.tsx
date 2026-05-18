@@ -54,8 +54,13 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
 
 export default function PulseLandingPage() {
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    setMounted(true);
+    // Defer the state update to safely break out of the synchronous render phase
+    const handle = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+
     const space = document.getElementById("space");
     if (!space || space.childElementCount > 0) return;
 
@@ -124,7 +129,10 @@ export default function PulseLandingPage() {
 
     document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    return () => {
+      cancelAnimationFrame(handle);
+      observer.disconnect();
+    };
   }, []);
   
   if (!mounted) return null;
@@ -495,4 +503,3 @@ function BenefitCard({ title, children }: { title: string; children: React.React
     </div>
   );
 }
-

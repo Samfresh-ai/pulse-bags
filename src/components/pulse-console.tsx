@@ -8,6 +8,7 @@ import { ActivationPanel } from "./activation-panel";
 import DashboardSidebar from "./ui/dashboard-sidebar";
 import DashboardOverview from "./dashboard-overview";
 import HoldersPage from "./holders";
+import ActivationFlow from "./activation-flow";
 
 type Props = {
   initialToken: TokenProfile;
@@ -156,6 +157,12 @@ export function PulseConsole({ initialToken, initialHolders, initialScores, init
         ) : activeNav === "holders" ? (
           <HoldersPage
             initialToken={token}
+            initialHolders={holders}
+            initialScores={scores}
+          />
+        ) : activeNav === "activations" ? (
+          <ActivationFlow
+            token={token}
             initialHolders={holders}
             initialScores={scores}
           />

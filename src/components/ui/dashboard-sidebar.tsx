@@ -82,7 +82,6 @@ export default function DashboardSidebar({ activeNav, token, onNavChange }: Dash
                 </div>
             </div>
 
-            {/* Logout */}
             <div className="px-3 pb-4">
                 <button
                     onClick={() => logout()}
